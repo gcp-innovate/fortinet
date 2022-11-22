@@ -12,7 +12,7 @@ data "http" "my_ip" {
 
 # Create base deployment of FortiGate HA cluster
 module "fortigates" {
-  source          = "../modules/fgcp-ha-ap-lb"
+  source          = "./modules/fgcp-ha-ap-lb"
 
   region          = var.GCE_REGION
   service_account = data.google_service_account.fgt.email != null ? data.google_service_account.fgt.email : ""
@@ -42,7 +42,7 @@ module "fortigates" {
 
 ## Remove the block below if you're using your own networks
 module "sample_networks" {
-  source          = "../modules/sample-networks"
+  source          = "./modules/sample-networks"
 
   prefix          = var.prefix
   region          = var.GCE_REGION
